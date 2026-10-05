@@ -5,13 +5,15 @@ import { Heart } from '../doodles/Doodles'
 import { StepIcon } from '../doodles/StepIcon'
 import { Scallop } from '../ui/Scallop'
 import { SectionHeading } from '../ui/SectionHeading'
+import { SectionDecor } from '../ui/SectionDecor'
 
 const RIBBON_H = 'M0 64C90 14 170 118 260 70S420 6 500 62S690 122 760 64S910 10 1000 58'
 const RIBBON_V = 'M30 0C58 90 2 180 30 270S58 450 30 540S2 720 30 810S56 940 30 1000'
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" aria-labelledby="how-title" className="cv-auto relative overflow-hidden bg-keepsake-bubblegum py-20 sm:py-28">
+    <section id="how-it-works" aria-labelledby="how-title" className="cv-auto relative overflow-hidden bg-keepsake-bubblegum py-20 sm:py-28 isolate">
+      <SectionDecor pattern="dots" tone="text-white/55" doodles="b" doodleTone="text-keepsake-ribbon/70" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="how-title"

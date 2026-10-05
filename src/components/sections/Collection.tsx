@@ -2,9 +2,9 @@ import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { useState } from 'react'
 import { categories, products, type CategoryFilter } from '../../data/products'
 import { cn } from '../../lib/cn'
-import { Bow, Sparkle } from '../doodles/Doodles'
 import { SectionHeading } from '../ui/SectionHeading'
 import { ProductCard } from './ProductCard'
+import { SectionDecor } from '../ui/SectionDecor'
 
 export function Collection() {
   const [filter, setFilter] = useState<CategoryFilter>('all')
@@ -13,9 +13,8 @@ export function Collection() {
   const shown = products.filter((p) => filter === 'all' || p.category === filter)
 
   return (
-    <section id="shop" aria-labelledby="shop-title" className="cv-auto relative bg-keepsake-petal py-20 sm:py-28">
-      <Sparkle aria-hidden className="absolute top-16 left-[8%] size-8 text-keepsake-candy" />
-      <Bow aria-hidden className="absolute top-24 right-[7%] hidden w-16 text-keepsake-candy sm:block" />
+    <section id="shop" aria-labelledby="shop-title" className="cv-auto relative bg-keepsake-petal py-20 sm:py-28 isolate overflow-hidden">
+      <SectionDecor pattern="hearts" tone="text-keepsake-candy/30" doodles="a" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="shop-title"

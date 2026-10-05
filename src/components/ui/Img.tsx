@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ImgHTMLAttributes } from 'react'
 import { cn } from '../../lib/cn'
+import { Heart } from '../doodles/Doodles'
 
 type Tint = 'pink' | 'cream' | 'ink' | 'burgundy'
 
@@ -72,7 +73,12 @@ export function Img({
         />
       )}
       {state === 'loading' && !priority && (
-        <div aria-hidden className="absolute inset-0 animate-pulse bg-gradient-to-br from-keepsake-blush to-keepsake-petal" />
+        <div aria-hidden className="absolute inset-0 grid place-items-center bg-gradient-to-br from-keepsake-blush to-keepsake-petal">
+          <span className="relative grid size-10 place-items-center">
+            <span className="absolute inset-0 animate-spin rounded-full border-[3px] border-keepsake-candy/25 border-t-keepsake-candy motion-reduce:animate-none" />
+            <Heart filled className="size-3.5 text-keepsake-candy" />
+          </span>
+        </div>
       )}
       {state === 'error' && (
         <div

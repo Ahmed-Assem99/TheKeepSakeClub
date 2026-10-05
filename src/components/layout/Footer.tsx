@@ -20,7 +20,7 @@ export function Footer() {
         <nav aria-label="footer">
           <h2 className="font-hand text-2xl text-keepsake-candy">explore</h2>
           <ul className="mt-3 space-y-1">
-            {[...navLinks, { label: 'faq & policy', href: '#faq' }].map((l) => (
+            {navLinks.map((l) => (
               <li key={l.href}>
                 <a href={l.href} className="inline-flex min-h-11 items-center lowercase text-keepsake-cream/85 hover:text-keepsake-bubblegum">
                   {l.label}

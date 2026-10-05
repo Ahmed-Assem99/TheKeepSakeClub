@@ -5,6 +5,7 @@ import { cn } from '../../lib/cn'
 import { Heart } from '../doodles/Doodles'
 import { Accordion } from '../ui/Accordion'
 import { SectionHeading } from '../ui/SectionHeading'
+import { SectionDecor } from '../ui/SectionDecor'
 
 const icons: Record<PolicyIcon, LucideIcon> = {
   card: CreditCard,
@@ -30,7 +31,8 @@ export function Faq() {
   }))
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className="cv-auto bg-keepsake-petal py-20 sm:py-28">
+    <section id="faq" aria-labelledby="faq-title" className="cv-auto bg-keepsake-petal py-20 sm:py-28 relative isolate overflow-hidden">
+      <SectionDecor pattern="dots" tone="text-keepsake-candy/35" doodles="b" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="faq-title"

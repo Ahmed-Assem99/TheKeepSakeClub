@@ -1,12 +1,14 @@
 import { testimonials } from '../../data/testimonials'
 import { Heart } from '../doodles/Doodles'
 import { SectionHeading } from '../ui/SectionHeading'
+import { SectionDecor } from '../ui/SectionDecor'
 
 /** Renders nothing until there are consented testimonials in src/data/testimonials.ts. */
 export function LoveNotes() {
   if (testimonials.length === 0) return null
   return (
-    <section aria-labelledby="love-notes-title" className="bg-keepsake-cream py-20 sm:py-28">
+    <section aria-labelledby="love-notes-title" className="bg-keepsake-cream py-20 sm:py-28 relative isolate overflow-hidden">
+      <SectionDecor pattern="hearts" tone="text-keepsake-candy/25" doodles="a" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading id="love-notes-title" eyebrow="love notes" title="from the people who got the gifts." />
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

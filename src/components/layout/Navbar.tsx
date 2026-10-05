@@ -58,7 +58,7 @@ export function Navbar() {
     return () => {
       document.body.style.overflow = prevOverflow
       document.removeEventListener('keydown', onKey)
-      button?.focus()
+      button?.focus({ preventScroll: true })
     }
   }, [open])
 
@@ -76,12 +76,12 @@ export function Navbar() {
       <nav aria-label="main" className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Brand />
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-1 xl:flex">
           {navLinks.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="group relative inline-flex min-h-11 items-center rounded-full px-4 font-semibold lowercase text-keepsake-ink hover:text-keepsake-ribbon-deep"
+                className="group relative inline-flex min-h-11 items-center rounded-full px-4 font-semibold whitespace-nowrap lowercase text-keepsake-ink hover:text-keepsake-ribbon-deep"
               >
                 {l.label}
                 <span
@@ -100,7 +100,7 @@ export function Navbar() {
           <button
             ref={menuButton}
             type="button"
-            className="grid size-11 place-items-center rounded-full border-2 border-keepsake-ink bg-keepsake-cream lg:hidden"
+            className="grid size-11 place-items-center rounded-full border-2 border-keepsake-ink bg-keepsake-cream xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen(true)}
@@ -116,7 +116,7 @@ export function Navbar() {
           <>
             <motion.div
               key="scrim"
-              className="fixed inset-0 z-[55] bg-keepsake-ink/40 lg:hidden"
+              className="fixed inset-0 z-[55] bg-keepsake-ink/40 xl:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -130,7 +130,7 @@ export function Navbar() {
               role="dialog"
               aria-modal="true"
               aria-label="menu"
-              className="fixed inset-y-0 right-0 z-[56] flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-blob bg-keepsake-bubblegum px-6 pt-5 pb-8 shadow-lift lg:hidden"
+              className="fixed inset-y-0 right-0 z-[56] flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-blob bg-keepsake-bubblegum px-6 pt-5 pb-8 shadow-lift xl:hidden"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}

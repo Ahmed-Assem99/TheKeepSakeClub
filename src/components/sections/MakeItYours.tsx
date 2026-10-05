@@ -5,6 +5,7 @@ import { Heart, Sparkle } from '../doodles/Doodles'
 import { Logo } from '../doodles/Logo'
 import { DmButton } from '../ui/DmButton'
 import { SectionHeading } from '../ui/SectionHeading'
+import { SectionDecor } from '../ui/SectionDecor'
 
 const features = [
   { title: 'a personalized card', body: 'your words, tucked into every gift bundle.', emoji: '💌' },
@@ -44,7 +45,8 @@ export function MakeItYours() {
   ].join('\n')
 
   return (
-    <section id="personalize" aria-labelledby="personalize-title" className="cv-auto relative overflow-hidden bg-keepsake-petal py-20 sm:py-28">
+    <section id="personalize" aria-labelledby="personalize-title" className="cv-auto relative overflow-hidden bg-keepsake-petal py-20 sm:py-28 isolate">
+      <SectionDecor pattern="grid" tone="text-keepsake-candy/35" doodles="c" />
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-8">
         <div>
           <SectionHeading

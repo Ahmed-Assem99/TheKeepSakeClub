@@ -8,6 +8,7 @@ import { DmButton } from '../ui/DmButton'
 import { DoodleArrow } from '../ui/DoodleArrow'
 import { Img } from '../ui/Img'
 import { SectionHeading } from '../ui/SectionHeading'
+import { SectionDecor } from '../ui/SectionDecor'
 
 const spotlight = ['reset-kit', 'matcha-kit', 'hug-in-a-mug']
   .map((id) => productById(id))
@@ -27,7 +28,8 @@ export function CloserLook() {
   }
 
   return (
-    <section id="closer-look" aria-labelledby="closer-look-title" className="cv-auto relative overflow-hidden bg-keepsake-blush py-20 sm:py-28">
+    <section id="closer-look" aria-labelledby="closer-look-title" className="cv-auto relative overflow-hidden bg-keepsake-blush py-20 sm:py-28 isolate">
+      <SectionDecor pattern="stripes" tone="text-keepsake-candy/20" doodles="b" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           id="closer-look-title"

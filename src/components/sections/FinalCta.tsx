@@ -3,10 +3,12 @@ import { Bow, Heart, Sparkle } from '../doodles/Doodles'
 import { Logo } from '../doodles/Logo'
 import { DmButton } from '../ui/DmButton'
 import { Scallop } from '../ui/Scallop'
+import { SectionDecor } from '../ui/SectionDecor'
 
 export function FinalCta() {
   return (
-    <section aria-labelledby="cta-title" className="cv-auto bg-keepsake-petal px-4 pt-4 pb-24 sm:px-6">
+    <section aria-labelledby="cta-title" className="cv-auto bg-keepsake-petal px-4 pt-4 pb-24 sm:px-6 relative isolate overflow-hidden">
+      <SectionDecor pattern="hearts" tone="text-keepsake-candy/25" doodles="c" />
       <div className="mx-auto max-w-5xl drop-shadow-[0_24px_30px_rgba(218,15,26,0.28)]">
         <Scallop shape="rect" size={12} className="bg-keepsake-ribbon p-[14px]">
           <div className="relative overflow-hidden rounded-[18px] bg-keepsake-bubblegum px-6 py-16 text-center sm:px-12 sm:py-20">
