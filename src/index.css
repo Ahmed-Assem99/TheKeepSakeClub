@@ -1,1 +1,155 @@
 @import 'tailwindcss';
+@config '../tailwind.config.ts';
+
+
+/* Self-hosted Google Fonts (SIL Open Font License), latin subset. Critical ones are preloaded in index.html. */
+@font-face {
+  font-family: 'Londrina Solid';
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/londrina-solid-900.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Caveat Brush';
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/caveat-brush-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Sans Variable';
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url('/fonts/dm-sans-variable.woff2') format('woff2-variations');
+}
+/* Fallbacks sized to match the web fonts' widths, so nothing reflows when they swap in. */
+@font-face {
+  font-family: 'Londrina Fallback';
+  src: local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Helvetica'), local('Roboto'), local('Arimo'), local('Liberation Sans'), local('LiberationSans');
+  size-adjust: 81%;
+}
+@font-face {
+  font-family: 'Caveat Fallback';
+  src: local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Helvetica'), local('Roboto'), local('Arimo'), local('Liberation Sans'), local('LiberationSans');
+  size-adjust: 80.7%;
+}
+@font-face {
+  font-family: 'DM Sans Fallback';
+  src: local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Helvetica'), local('Roboto'), local('Arimo'), local('Liberation Sans'), local('LiberationSans');
+  size-adjust: 105.5%;
+}
+@font-face {
+  font-family: 'Pinyon Script';
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/pinyon-script-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/instrument-serif-400-italic.woff2') format('woff2');
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-keepsake-petal font-sans text-keepsake-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-keepsake-ribbon text-white;
+  }
+
+  /* Visible, on-brand focus rings everywhere */
+  :focus-visible {
+    outline: 3px solid #da0f1a;
+    outline-offset: 3px;
+  }
+  .on-dark :focus-visible {
+    outline-color: #feb4e3;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Subtle paper grain over the whole page (~4%) */
+  .paper-grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .1 0 0 0 0 .2 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Polka dots, like the reset kit pouch */
+  .bg-dots {
+    background-image: radial-gradient(currentColor 1.6px, transparent 1.8px);
+    background-size: 22px 22px;
+  }
+
+  /* Pinstripes, like the "i love you so matcha" card and the book pages */
+  .bg-stripes {
+    background-image: repeating-linear-gradient(
+      90deg,
+      currentColor 0 9px,
+      transparent 9px 18px
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  /* Skip layout & paint for off-screen sections until they get close (big win on phones). */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1200px;
+  }
+  .perspective {
+    perspective: 1400px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
