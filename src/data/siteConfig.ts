@@ -26,7 +26,6 @@ export interface SiteConfig {
    */
   logoSrc?: string
   wordmarkSrc?: string
-  siteUrl: string
 }
 
 export const siteConfig: SiteConfig = {
@@ -40,8 +39,6 @@ export const siteConfig: SiteConfig = {
   defaultDmMessage: "hi! i'd love to order a gift from the keepsake club 🎀",
   logoSrc: undefined,
   wordmarkSrc: undefined,
-  // TODO: confirm with owner: the final domain (also update og:url / og:image in index.html)
-  siteUrl: 'https://thekeepsakeclub.com',
 }
 
 export const navLinks = [

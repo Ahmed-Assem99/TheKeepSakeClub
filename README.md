@@ -34,6 +34,8 @@ traced EK logo / wordmark).
 
 ## Common edits
 
+- **Link previews (WhatsApp, Instagram, iMessage):** the share image is `public/og-image.jpg` (1200×630).
+  Apps cache previews per link, so after changing it, test with a fresh URL like `…/?v=2`.
 - **Add a price:** set `price: 950` on a product in `src/data/products.ts`. It shows on the card as EGP.
 - **Turn on WhatsApp:** set `whatsappNumber: '201xxxxxxxxx'` in `src/data/siteConfig.ts`. Every order
   button gets an "order on whatsapp" partner.
@@ -44,8 +46,9 @@ traced EK logo / wordmark).
 
 - Delivery areas and fees, payment methods, prices (FAQ shows friendly fallbacks; in dev they carry a
   yellow TODO badge).
-- Final domain for canonical / Open Graph URLs (`index.html`, `public/robots.txt`, `public/sitemap.xml`,
-  `siteConfig.siteUrl`).
+- Custom domain (optional): link previews, canonical URL, robots.txt and sitemap use the Vercel production
+  domain automatically. Once you add your own domain, set a `SITE_URL` environment variable in Vercel
+  (e.g. `https://thekeepsakeclub.com`) and redeploy.
 - Original high-res photos to replace the Instagram screenshots.
 - Customer consent for testimonials.
 
