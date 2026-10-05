@@ -49,4 +49,5 @@ export const navLinks = [
   { label: 'how it works', href: '#how-it-works' },
   { label: 'personalize', href: '#personalize' },
   { label: 'instagram', href: '#instagram' },
+  { label: 'faq & policy', href: '#faq' },
 ] as const

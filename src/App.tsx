@@ -1,4 +1,5 @@
 import { MotionConfig } from 'framer-motion'
+import { useEffect } from 'react'
 import { AnnouncementBar } from './components/layout/AnnouncementBar'
 import { Footer } from './components/layout/Footer'
 import { Navbar } from './components/layout/Navbar'
@@ -16,8 +17,11 @@ import { MarqueeStrip } from './components/sections/MarqueeStrip'
 import { Unboxing } from './components/sections/Unboxing'
 import { BrandSprite } from './components/doodles/Logo'
 import { ToastProvider } from './components/ui/Toast'
+import { installAnchorScroll } from './lib/anchorScroll'
 
 export default function App() {
+  useEffect(() => installAnchorScroll(), [])
+
   return (
     <MotionConfig reducedMotion="user">
       <ToastProvider>

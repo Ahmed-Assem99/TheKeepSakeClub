@@ -5,6 +5,7 @@ import { Logo, Wordmark } from '../doodles/Logo'
 import { Scallop } from '../ui/Scallop'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Sticker } from '../ui/Sticker'
+import { SectionDecor } from '../ui/SectionDecor'
 
 const HEART = 'M100 178C80 165 18 128 10 80C4 44 28 18 58 20C78 21 92 34 100 50C108 34 122 21 142 20C172 18 196 44 190 80C182 128 120 165 100 178Z'
 
@@ -125,7 +126,8 @@ function HeartTag() {
 
 export function Unboxing() {
   return (
-    <section aria-labelledby="unboxing-title" className="cv-auto bg-keepsake-petal px-3 py-20 sm:px-6 sm:py-28">
+    <section aria-labelledby="unboxing-title" className="cv-auto bg-keepsake-petal px-3 py-20 sm:px-6 sm:py-28 relative isolate overflow-hidden">
+      <SectionDecor pattern="sparkles" tone="text-keepsake-candy/40" doodles="c" />
       <div className="on-dark relative mx-auto max-w-7xl overflow-hidden rounded-blob bg-keepsake-ink px-5 py-16 sm:px-10 lg:px-16 lg:py-20">
         <Sparkle aria-hidden className="absolute top-10 right-[12%] size-8 animate-twinkle text-keepsake-candy" />
         <Sparkle aria-hidden className="absolute bottom-16 left-[8%] size-6 animate-twinkle text-keepsake-candy [animation-delay:1s]" />

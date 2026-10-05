@@ -3,12 +3,14 @@ import { siteConfig } from '../../data/siteConfig'
 import { Heart, InstagramGlyph } from '../doodles/Doodles'
 import { ButtonLink } from '../ui/Button'
 import { Img } from '../ui/Img'
+import { SectionDecor } from '../ui/SectionDecor'
 
 const tilt = [-2, 1.5, -1, 2, -1.5, 1, -2.5, 1.5]
 
 export function InstagramStrip() {
   return (
-    <section id="instagram" aria-labelledby="instagram-title" className="cv-auto overflow-hidden bg-keepsake-blush py-20 sm:py-24">
+    <section id="instagram" aria-labelledby="instagram-title" className="cv-auto overflow-hidden bg-keepsake-blush py-20 sm:py-24 relative isolate">
+      <SectionDecor pattern="gingham" tone="text-keepsake-candy/[0.09]" doodles="a" />
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:flex-row sm:items-end sm:px-6 lg:px-8">
         <div>
           <p className="font-hand text-2xl text-keepsake-burgundy">the journal</p>

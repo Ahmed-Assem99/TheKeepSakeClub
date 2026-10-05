@@ -7,6 +7,7 @@ import { useFinePointer } from '../../lib/useMediaQuery'
 import { Sparkle } from '../doodles/Doodles'
 import { DmButton } from '../ui/DmButton'
 import { Img } from '../ui/Img'
+import { SectionDecor } from '../ui/SectionDecor'
 
 const books = products.filter((p) => p.category === 'book')
 const order = ['art-of-loving-you', 'birthday-magazine', 'messages-book']
@@ -77,7 +78,8 @@ function BookSpread({ book, index }: { book: Product; index: number }) {
 
 export function KeepsakeBooks() {
   return (
-    <section id="books" aria-labelledby="books-title" className="on-dark cv-auto relative overflow-hidden bg-keepsake-burgundy py-20 text-keepsake-cream sm:py-28">
+    <section id="books" aria-labelledby="books-title" className="on-dark cv-auto relative overflow-hidden bg-keepsake-burgundy py-20 text-keepsake-cream sm:py-28 isolate">
+      <SectionDecor doodles="a" doodleTone="text-keepsake-bubblegum/60" />
       <div aria-hidden className="bg-stripes pointer-events-none absolute inset-0 text-white/[0.035]" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">

@@ -31,6 +31,17 @@
 
     <link rel="preload" as="font" type="font/woff2" href="/fonts/londrina-solid-900.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-variable.woff2" crossorigin />
+    <style>
+      /* Pink loading splash, shown only while #root is still empty (dev / no pre-rendered HTML). */
+      #root:empty { position: fixed; inset: 0; display: grid; place-items: center; background: #feb4e3; }
+      #root:empty::before {
+        content: ''; width: 52px; height: 52px; border-radius: 50%;
+        border: 5px solid rgba(218, 15, 26, 0.18); border-top-color: #da0f1a;
+        animation: ks-spin 0.8s linear infinite;
+      }
+      @keyframes ks-spin { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) { #root:empty::before { animation-duration: 2.4s; } }
+    </style>
   </head>
   <body>
     <div id="root"><!--app-html--></div>
