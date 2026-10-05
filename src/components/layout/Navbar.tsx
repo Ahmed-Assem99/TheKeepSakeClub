@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { createPortal } from 'react-dom'
 import { navLinks, siteConfig } from '../../data/siteConfig'
 import { cn } from '../../lib/cn'
 import { InstagramGlyph, Sparkle } from '../doodles/Doodles'
@@ -21,6 +22,13 @@ function Brand({ onClick }: { onClick?: () => void }) {
 export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  // The menu renders into <body>: the header's backdrop blur (once scrolled) would otherwise become the
+  // containing block for the fixed drawer and squash it to the header's height.
+  const isClient = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  )
   const menuButton = useRef<HTMLButtonElement>(null)
   const drawer = useRef<HTMLDivElement>(null)
 
@@ -111,77 +119,81 @@ export function Navbar() {
         </div>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <>
-            <motion.div
-              key="scrim"
-              className="fixed inset-0 z-[55] bg-keepsake-ink/40 xl:hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={close}
-              aria-hidden
-            />
-            <motion.div
-              key="drawer"
-              id="mobile-menu"
-              ref={drawer}
-              role="dialog"
-              aria-modal="true"
-              aria-label="menu"
-              className="fixed inset-y-0 right-0 z-[56] flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-blob bg-keepsake-bubblegum px-6 pt-5 pb-8 shadow-lift xl:hidden"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', stiffness: 320, damping: 34 }}
-            >
-              <div className="flex items-center justify-between">
-                <Logo title="" className="w-14 text-keepsake-ribbon" />
-                <button
-                  type="button"
+      {isClient &&
+        createPortal(
+          <AnimatePresence>
+            {open && (
+              <>
+                <motion.div
+                  key="scrim"
+                  className="fixed inset-0 z-[55] bg-keepsake-ink/40 xl:hidden"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   onClick={close}
-                  className="grid size-11 place-items-center rounded-full border-2 border-keepsake-ink bg-keepsake-cream"
+                  aria-hidden
+                />
+                <motion.div
+                  key="drawer"
+                  id="mobile-menu"
+                  ref={drawer}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label="menu"
+                  className="fixed inset-y-0 right-0 z-[56] flex w-[min(88vw,380px)] flex-col overflow-y-auto rounded-l-blob bg-keepsake-bubblegum px-6 pt-5 pb-8 shadow-lift xl:hidden"
+                  initial={{ x: '100%' }}
+                  animate={{ x: 0 }}
+                  exit={{ x: '100%' }}
+                  transition={{ type: 'spring', stiffness: 320, damping: 34 }}
                 >
-                  <X aria-hidden className="size-5" strokeWidth={2.6} />
-                  <span className="sr-only">close menu</span>
-                </button>
-              </div>
-              <ul className="mt-8 space-y-1">
-                {navLinks.map((l, i) => (
-                  <motion.li
-                    key={l.href}
-                    initial={{ opacity: 0, x: 24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.08 + i * 0.05 }}
-                  >
-                    <a
-                      href={l.href}
+                  <div className="flex items-center justify-between">
+                    <Logo title="" className="w-14 text-keepsake-ribbon" />
+                    <button
+                      type="button"
                       onClick={close}
-                      className="flex min-h-14 items-center gap-3 font-display text-4xl font-black lowercase text-keepsake-ribbon"
+                      className="grid size-11 place-items-center rounded-full border-2 border-keepsake-ink bg-keepsake-cream"
                     >
-                      <Sparkle className="size-5 text-keepsake-burgundy" />
-                      {l.label}
+                      <X aria-hidden className="size-5" strokeWidth={2.6} />
+                      <span className="sr-only">close menu</span>
+                    </button>
+                  </div>
+                  <ul className="mt-8 space-y-1">
+                    {navLinks.map((l, i) => (
+                      <motion.li
+                        key={l.href}
+                        initial={{ opacity: 0, x: 24 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.08 + i * 0.05 }}
+                      >
+                        <a
+                          href={l.href}
+                          onClick={close}
+                          className="flex min-h-14 items-center gap-3 font-display text-4xl font-black lowercase text-keepsake-ribbon"
+                        >
+                          <Sparkle className="size-5 text-keepsake-burgundy" />
+                          {l.label}
+                        </a>
+                      </motion.li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto space-y-4 pt-10">
+                    <p className="font-hand text-2xl text-keepsake-burgundy">no cart, no checkout. just a quick dm&lt;3</p>
+                    <DmButton size="lg" className="w-full" srLabel="general enquiry" />
+                    <a
+                      href={siteConfig.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex min-h-11 items-center justify-center gap-2 font-semibold text-keepsake-ink"
+                    >
+                      <InstagramGlyph className="size-5" /> @{siteConfig.instagramHandle}
                     </a>
-                  </motion.li>
-                ))}
-              </ul>
-              <div className="mt-auto space-y-4 pt-10">
-                <p className="font-hand text-2xl text-keepsake-burgundy">no cart, no checkout. just a quick dm&lt;3</p>
-                <DmButton size="lg" className="w-full" srLabel="general enquiry" />
-                <a
-                  href={siteConfig.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex min-h-11 items-center justify-center gap-2 font-semibold text-keepsake-ink"
-                >
-                  <InstagramGlyph className="size-5" /> @{siteConfig.instagramHandle}
-                </a>
-              </div>
-            </motion.div>
-          </>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </header>
   )
 }
