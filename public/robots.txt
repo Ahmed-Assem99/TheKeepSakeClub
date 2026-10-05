@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# TODO: confirm with owner: update the domain once it's live
-Sitemap: https://thekeepsakeclub.com/sitemap.xml
