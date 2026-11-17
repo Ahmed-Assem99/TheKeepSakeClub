@@ -1,4 +1,4 @@
-# The Keepsake Club
+# The Keepsake Club: content & maintenance guide
 
 Landing page for **The Keepsake Club**, an Egypt-based gift shop that sells through Instagram DMs
 ([@thekeepsakeclubb](https://www.instagram.com/thekeepsakeclubb/)). _for the memories worth keeping._
